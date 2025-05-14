@@ -23,7 +23,7 @@ enum class OS {
             val v = value.normalized()
             return when {
                 v.startsWith(aix.name) -> aix
-                v == "android" -> android
+                v == android.name -> android
                 v.startsWith(hpux.name) -> hpux
                 // Avoid the names such as os4000
                 v.startsWith(os400.name) && (v.length <= 5 || !v[5].isDigit()) -> os400
@@ -94,7 +94,7 @@ enum class Arch {
                 v == riscv64.name -> riscv64
                 v == e2k.name -> e2k
                 v == "loongarch64" -> loongarch_64
-                v == "universal" -> universal
+                v == universal.name -> universal
                 else -> error("invalid Arch: $v ($value)")
             }
         }
