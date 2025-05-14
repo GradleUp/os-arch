@@ -23,9 +23,14 @@ testing {
 }
 
 gradlePlugin {
+    website = "https://github.com/GradleUp/os-arch"
+    vcsUrl = website
     // Define the plugin
     plugins.create("os-arch") {
         id = "gradleUp.os-arch"
         implementationClass = "gradleUp.OsArchPlugin"
+        displayName = "os-arch"
+        description = "Util Gradle plugin for retrieving os and arch of the underlying platform"
+        tags = listOf("os", "operating-system", "operating", "system", "arch", "architecture", "attribute")
     }
 }
