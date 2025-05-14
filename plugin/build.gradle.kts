@@ -5,7 +5,12 @@ plugins {
 
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     embeddedKotlin("jvm")
+
+    id("com.gradle.plugin-publish") version "1.2.1"
 }
+
+group = "io.github.gradleUp"
+version = "0.0.1"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -27,7 +32,7 @@ gradlePlugin {
     vcsUrl = website
     // Define the plugin
     plugins.create("os-arch") {
-        id = "gradleUp.os-arch"
+        id = "io.github.gradleUp.os-arch"
         implementationClass = "gradleUp.OsArchPlugin"
         displayName = "os-arch"
         description = "Util Gradle plugin for retrieving os and arch of the underlying platform"

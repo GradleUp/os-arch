@@ -4,6 +4,7 @@ package gradleUp
 
 enum class OS {
     aix,
+    android,
     hpux,
     os400,
     linux,
@@ -22,6 +23,7 @@ enum class OS {
             val v = value.normalized()
             return when {
                 v.startsWith(aix.name) -> aix
+                v == "android" -> android
                 v.startsWith(hpux.name) -> hpux
                 // Avoid the names such as os4000
                 v.startsWith(os400.name) && (v.length <= 5 || !v[5].isDigit()) -> os400
