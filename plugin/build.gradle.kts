@@ -17,6 +17,8 @@ repositories {
     mavenCentral()
 }
 
+kotlin.jvmToolchain(8)
+
 testing {
     suites {
         // Configure the built-in test suite
