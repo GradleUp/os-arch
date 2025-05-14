@@ -1,6 +1,7 @@
 package gradleUp
 
 // based on https://github.com/trustin/os-maven-plugin
+// plus `android`, `armv6hf` and `universal`
 
 enum class OS {
     aix,
