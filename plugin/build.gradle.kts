@@ -7,10 +7,12 @@ plugins {
     embeddedKotlin("jvm")
 
     id("com.gradle.plugin-publish") version "1.2.1"
+
+    `kotlin-dsl`
 }
 
 group = "io.github.gradleUp"
-version = "0.0.3"
+version = "0.0.4"
 
 repositories {
     // Use Maven Central for resolving dependencies.
