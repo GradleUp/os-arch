@@ -1,9 +1,11 @@
 package gradleUp
 
+import org.gradle.api.Named
+
 // based on https://github.com/trustin/os-maven-plugin
 // plus `android`, `armv6hf` and `universal`
 
-enum class OS {
+enum class OS: Named {
     aix,
     android,
     hpux,
@@ -17,9 +19,12 @@ enum class OS {
     windows,
     zos;
 
+    override fun getName() = name
+
     companion object {
         val current: OS
             get() = of(System.getProperty("os.name"))
+
         infix fun of(value: String): OS {
             val v = value.normalized()
             return when {
@@ -42,7 +47,7 @@ enum class OS {
     }
 }
 
-enum class Arch {
+enum class Arch : Named {
     x86_64,
     x86_32,
     itanium_64,
@@ -67,9 +72,12 @@ enum class Arch {
     loongarch_64,
     universal;
 
+    override fun getName() = name
+
     companion object {
         val current: Arch
             get() = of(System.getProperty("os.arch"))
+
         infix fun of(value: String): Arch {
             val v = value.normalized()
             return when {
