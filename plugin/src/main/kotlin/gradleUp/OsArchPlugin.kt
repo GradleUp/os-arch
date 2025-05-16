@@ -8,8 +8,8 @@ import org.gradle.nativeplatform.OperatingSystemFamily
 class OsArchPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.configurations.configureEach {
-            if ("runtime" in name) {
-                println("setting attributes for '$name' configuration")
+            if (name.contains("runtime", ignoreCase = true)) {
+                project.logger.info("setting attributes for '$name' configuration")
                 attributes {
                     val platform = Platform.current
                     attribute(OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE, project.objects.named(platform.os))
