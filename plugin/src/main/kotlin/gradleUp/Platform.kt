@@ -9,6 +9,8 @@ data class Platform(val os: OS, val arch: Arch): Named {
 
     override fun getName() = "$os-$arch"
 
+    override fun toString() = name
+
     companion object {
         val ATTRIBUTE = Attribute.of(Platform::class.java)
         val current: Platform
