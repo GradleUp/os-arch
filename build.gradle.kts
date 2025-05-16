@@ -1,4 +1,3 @@
-
 plugins {
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     `java-gradle-plugin`
@@ -12,7 +11,7 @@ plugins {
 }
 
 group = "io.github.gradleUp"
-version = "0.1.5"
+version = "0.1.6"
 
 repositories {
     // Use Maven Central for resolving dependencies.
