@@ -11,8 +11,10 @@ inline fun <reified T : Named> ObjectFactory.named(arch: Arch): T = named(arch.n
 
 infix fun File.getOsArch(regex: Regex): Pair<OS, Arch> = regex.matchEntire(name)!!
         .destructured.let { (os, arch) -> OS.of(os) to Arch.of(arch) }
-
 infix fun File.getPlatform(regex: Regex) = Platform(getOsArch(regex))
+
+infix fun File.getOsArch(regex: String): Pair<OS, Arch> = getOsArch(Regex(regex))
+infix fun File.getPlatform(regex: String): Platform = getPlatform(Regex(regex))
 
 val defaultExtractor = Regex(".*-natives-([^-]+)-(.+?)\\.jar")
 

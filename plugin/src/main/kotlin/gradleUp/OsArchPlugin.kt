@@ -1,9 +1,7 @@
 package gradleUp
 
-import org.gradle.api.Project
 import org.gradle.api.Plugin
-import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.named
+import org.gradle.api.Project
 
 class OsArchPlugin: Plugin<Project> {
     override fun apply(project: Project) {}
