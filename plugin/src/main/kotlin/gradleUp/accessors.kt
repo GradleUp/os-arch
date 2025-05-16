@@ -1,16 +1,17 @@
 package gradleUp
 
 import org.gradle.api.Named
+import org.gradle.api.artifacts.ExternalModuleDependency
 import org.gradle.api.model.ObjectFactory
 import org.gradle.kotlin.dsl.named
 import java.io.File
 
 inline fun <reified T : Named> ObjectFactory.named(os: OS): T = named(os.name)
-
 inline fun <reified T : Named> ObjectFactory.named(arch: Arch): T = named(arch.name)
 
 infix fun File.getOsArch(regex: Regex): Pair<OS, Arch> = regex.matchEntire(name)!!
         .destructured.let { (os, arch) -> OS.of(os) to Arch.of(arch) }
+
 infix fun File.getPlatform(regex: Regex) = Platform(getOsArch(regex))
 
 infix fun File.getOsArch(regex: String): Pair<OS, Arch> = getOsArch(Regex(regex))
@@ -24,3 +25,4 @@ inline val File.osArch: Pair<OS, Arch>
 inline val File.platform: Platform
     get() = getPlatform(defaultExtractor)
 
+fun ExternalModuleDependency.addNativesCapability() = capabilities { requireFeature(Platform.nativesCapability) }

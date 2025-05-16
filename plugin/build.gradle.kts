@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "io.github.gradleUp"
-version = "0.1.2"
+version = "0.1.3"
 
 repositories {
     // Use Maven Central for resolving dependencies.
