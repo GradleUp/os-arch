@@ -1,6 +1,8 @@
 package gradleUp
 
 import org.gradle.api.Named
+import org.gradle.api.NamedDomainObjectProvider
+import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ExternalModuleDependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.api.model.ObjectFactory
@@ -32,3 +34,7 @@ fun DependencyHandler.runtimeOnlyNatives(dependencyNotation: Any) {
     val runtimeOnly = add("runtimeOnly", dependencyNotation) as ExternalModuleDependency
     runtimeOnly.addNativesCapability()
 }
+
+var NamedDomainObjectProvider<Configuration>.onlyArtifact: File
+    get() = error("`NamedDomainObjectProvider<Configuration>.onlyArtifact` is not a retrievable property")
+    set(value) = configure { outgoing { artifacts.clear(); artifact(value) } }
