@@ -2,6 +2,7 @@ package gradleUp
 
 import org.gradle.api.Named
 import org.gradle.api.artifacts.ExternalModuleDependency
+import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.api.model.ObjectFactory
 import org.gradle.kotlin.dsl.named
 import java.io.File
@@ -26,3 +27,8 @@ inline val File.platform: Platform
     get() = getPlatform(defaultExtractor)
 
 fun ExternalModuleDependency.addNativesCapability() = capabilities { requireFeature(Platform.nativesCapability) }
+
+fun DependencyHandler.runtimeOnlyNatives(dependencyNotation: Any) {
+    val runtimeOnly = add("runtimeOnly", dependencyNotation) as ExternalModuleDependency
+    runtimeOnly.addNativesCapability()
+}
