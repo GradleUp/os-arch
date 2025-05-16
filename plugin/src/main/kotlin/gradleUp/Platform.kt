@@ -15,6 +15,7 @@ data class Platform(val os: OS, val arch: Arch) : Named {
 
     companion object {
         val ATTRIBUTE = Attribute.of(Platform::class.java)
+        val nativesCapability = "natives"
         val current: Platform
             get() = Platform(OS.current, Arch.current)
     }
