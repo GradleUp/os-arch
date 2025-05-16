@@ -16,8 +16,10 @@ class PlatformCompatibilityRule : AttributeCompatibilityRule<Platform> {
         // according to the docs, they are never equal, so we can already discard that case
         if (consumer?.os == OS.osx && producer?.os == OS.osx)
             if (producer.arch == Arch.universal)
-                if(consumer.arch == Arch.x86_64 || consumer.arch == Arch.aarch_64)
+                if(consumer.arch == Arch.x86_64 || consumer.arch == Arch.aarch_64) {
                     details.compatible()
+                    return
+                }
         details.incompatible()
     }
 }
